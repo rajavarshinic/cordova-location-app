@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Location App</title>
+  <script src="cordova.js"></script>
+  <script>
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          document.getElementById("location").innerHTML =
+            "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude +
+            "<br>Accuracy: " + position.coords.accuracy + " meters";
+        },
+        function(error) {
+          document.getElementById("location").innerHTML = "Error: " + error.message;
+        }
+      );
+    }
+  </script>
+</head>
+<body>
+  <h1>Current Location</h1>
+  <p id="location">Getting location...</p>
+</body>
+</html>
